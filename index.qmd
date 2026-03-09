@@ -99,13 +99,31 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ```{python}
 #| label: dag-1-1747
 #| echo: true
+#| fig-cap: "Simplified Lind's Model"
 
-# TODO: Replace this placeholder with your DAFT code
-# Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention
+# DAG showing the 1747 understanding: Lemons → Scurvy Prevention
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# Use DAFT to create nodes and edges that match the visual structure
-# Customize colors and styling to make it professional
+# Node: Lemons (cause)
+pgm.add_node("lemons", "Lemons", 1, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'darkgoldenrod',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Node: Scurvy Prevention (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+pgm.add_edge("lemons", "scurvy_prevention")
+
+pgm.render()
+plt.title("Simplified Lind's Model (1747)")
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
@@ -120,16 +138,44 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ```{python}
 #| label: dag-2-misguided
 #| echo: true
+#| fig-cap: "Updated Bacterial Theory (Late 19th Century)"
 
-# TODO: Replace this placeholder with your DAFT code
-# Create a DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention
+# DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention (angled layout)
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# This DAG should show the incorrect causal chain
-# Use different colors or styling to indicate this is the wrong understanding
+# Node positions on a diagonal: top-left → center → bottom-right
+# Acid (cause in the wrong theory)
+pgm.add_node("acid", "Acid", 0.5, 1.7, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'mistyrose',
+                 'edgecolor': 'indianred',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Bacteria Death (wrong intermediate mechanism)
+pgm.add_node("bacteria_death", "Bacteria\nDeath", 2, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightcoral',
+                 'edgecolor': 'darkred',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Scurvy Prevention (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3.5, 0.3, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'darkorange',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+pgm.add_edge("acid", "bacteria_death")
+pgm.add_edge("bacteria_death", "scurvy_prevention")
+
+pgm.render()
+plt.title("Updated Bacterial Theory (Late 19th Century)")
 ```
 
-### DAG 3: The 1928 Understanding (Complete and Correct)
+### DAG 3: The 1928 Understanding — Simplified Modern Understanding (1930s onwards)
 
 **Historical Context:** In 1928, the true mechanism was discovered - it was Vitamin C (ascorbic acid) that prevented scurvy. This complete understanding finally explained why lemons worked and why the acid theory was wrong.
 
@@ -141,13 +187,41 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ```{python}
 #| label: dag-3-1928
 #| echo: true
+#| fig-cap: "Simplified Modern Understanding (1930s onwards)"
 
-# TODO: Replace this placeholder with your DAFT code
-# Create a DAG showing the 1928 understanding: Vitamin C → Scurvy Prevention
+# DAG showing the 1928 understanding: Vitamin C → Collagen Synthesis → Scurvy Prevention (angled layout)
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# This should be the most complete and accurate representation
-# Use professional styling that would be suitable for a scientific publication
+# Node positions on a diagonal: top-left → center → bottom-right (like the sample)
+# Vitamin C (cause)
+pgm.add_node("vitamin_c", "Vitamin C", 0.5, 1.5, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Collagen Synthesis (intermediate mechanism)
+pgm.add_node("collagen_synthesis", "Collagen\nSynthesis", 2, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lavender',
+                 'edgecolor': 'mediumpurple',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Scurvy Prevention (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3.5, 0.5, aspect=2.5, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'darkgoldenrod',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+pgm.add_edge("vitamin_c", "collagen_synthesis")
+pgm.add_edge("collagen_synthesis", "scurvy_prevention")
+
+pgm.render()
+plt.title("Simplified Modern Understanding (1930s onwards)")
 ```
 
 ## Student Requirements Section: Mastering DAFT Visualization {#student-analysis-section}
