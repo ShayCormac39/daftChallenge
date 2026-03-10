@@ -98,7 +98,7 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 
 ```{python}
 #| label: dag-1-1747
-#| echo: true
+#| echo: false
 #| fig-cap: "Simplified Lind's Model"
 
 # DAG showing the 1747 understanding: Lemons → Scurvy Prevention
@@ -137,7 +137,7 @@ plt.title("Simplified Lind's Model (1747)")
 
 ```{python}
 #| label: dag-2-misguided
-#| echo: true
+#| echo: false
 #| fig-cap: "Updated Bacterial Theory (Late 19th Century)"
 
 # DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention (angled layout)
@@ -186,7 +186,7 @@ plt.title("Updated Bacterial Theory (Late 19th Century)")
 
 ```{python}
 #| label: dag-3-1928
-#| echo: true
+#| echo: false
 #| fig-cap: "Simplified Modern Understanding (1930s onwards)"
 
 # DAG showing the 1928 understanding: Vitamin C → Collagen Synthesis → Scurvy Prevention (angled layout)
